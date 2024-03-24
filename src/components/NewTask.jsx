@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 
 function NewTask({ onAdd }) {
-  const [enteredTask, setEnteredTask] = useState();
+  const [enteredTask, setEnteredTask] = useState('');
 
   function handleChange(e) {
     setEnteredTask(e.target.value);
   }
 
   function handleClick() {
+    // to prevent add empty tasks
+    if (enteredTask.trim() === '') {
+      return;
+    }
     onAdd(enteredTask);
-
     setEnteredTask('');
   }
 
